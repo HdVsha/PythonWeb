@@ -1,4 +1,4 @@
-def write (array, file_name):
+def write(array, file_name):
     with open(file_name, 'w') as out:
         out.writelines(array)
     pass
