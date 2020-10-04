@@ -2,8 +2,12 @@ import zipfile
 import os
 from pathlib import Path
 
-# file = zipfile.ZipFile(r"C:\Users\User\Downloads\main.zip")
-# file.extractall(r"C:\Users\User\PycharmProjects\MIPTStudies")
+
+def write(array, file_name):
+    array = map(lambda x: x + '\n', array)
+    file_name.writelines(array)
+
+
 with zipfile.ZipFile(r'C:\Users\User\Downloads\main.zip', 'r') as file:
     file.extractall(path=r"C:\Users\User\PycharmProjects\MIPTStudies\zippedfile")
 ourlist = set()
@@ -14,7 +18,9 @@ for current_dir, dirs, files in os.walk(our_p):
             ourlist.add(current_dir)
 ourlist = list(ourlist)
 ourlist.sort()
-for elem in ourlist:
-    word = elem[-5] + elem[-4] + elem[-3] + elem[-2] + elem[-1]
-    print(word)
-
+with open("file_3task", "w") as ourfile:
+    write(ourlist, ourfile)
+with open("file_3task", "r") as file3:
+    for line in file3:
+        line = line.strip()
+        print(line[-5] + line[-4] + line[-3] + line[-2] + line[-1])
