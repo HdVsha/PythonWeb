@@ -10,3 +10,4 @@ with open("1.json", 'r') as file:
 #     json.dump(data, file, indent=4)
 with open("1.json", "w") as tmpfile:
     tmpfile.write(json.dumps(info, indent=4))
+
