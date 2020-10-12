@@ -47,7 +47,7 @@ class Dolphin(Animal):
 
     def get_str(self):
         return f"Name = {self._name}, Age = {self._age}," \
-               f" Number of lines = {self._num_of_partners}," \
+               f" Number of partners = {self._num_of_partners}," \
                f" Type of animal = {self.type_of_animal()}"
 
     def __str__(self):
