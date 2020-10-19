@@ -31,8 +31,6 @@ class Zebra(Animal):
                f"Number of lines = {self._num_of_lines}," \
                f"Type of animal = {self.type_of_animal()}\n"
 
-    def __str__(self):
-        return self.get_str()
 
 
 class Dolphin(Animal):
@@ -50,8 +48,7 @@ class Dolphin(Animal):
                f" Number of partners = {self._num_of_partners}," \
                f" Type of animal = {self.type_of_animal()}"
 
-    def __str__(self):
-        return self.get_str()
+
 
 
 if __name__ == "__main__":
