@@ -1,0 +1,6 @@
+How the program will be implemented:
+	a)in main():
+		1.Getting all posts through "take_1000_posts"
+		and then writing them into the file with "file_writer";
+		2. Taking cleaned info from this file through "phrasefilter";
+		3. Markovifying;
