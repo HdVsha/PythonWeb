@@ -1,5 +1,5 @@
 import requests
-
+import json
 
 def take_1000_posts():
     # count is 100 bc vk only allows to request 100 items at once --- that's why it is cycle
