@@ -41,5 +41,5 @@ def phrase_cleaner(file):
     return cleaned_info
 
 
-array = phrase_cleaner('prepod_mipt.txt')
-print(array)
+# array = phrase_cleaner('prepod_mipt.txt')
+# print(array)
