@@ -33,7 +33,7 @@ def phrase_cleaner(file):
 
     # to get rid of empty lines
     for phrase in cleaned_info:
-        if len(phrase) == 0:
+        if len(phrase) == 0 or phrase[0] == "#":
             cleaned_info.remove(phrase)
 
     old_file.close()
