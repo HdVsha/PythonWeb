@@ -33,6 +33,6 @@ def file_writer(all_posts):
                 pass
 
 
-all_posts = take_1000_posts()
-file_writer(all_posts)
+# all_posts = take_1000_posts()
+# file_writer(all_posts)
 
