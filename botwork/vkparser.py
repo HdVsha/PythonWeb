@@ -28,7 +28,6 @@ def file_writer(all_posts):
         for post in all_posts:
             try:
                 file.writelines(post['text'])
-                print(post['text'])
             except:
                 pass
 
