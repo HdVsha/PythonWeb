@@ -15,13 +15,19 @@ if __name__ == "__main__":
     '''
     file_writer(all_posts)
     '''
-    ToDo: 
+    ToDo: Getting array of "cleaned" phrases
     '''
     array_of_phrases = phrase_cleaner('prepod_mipt.txt')
-
+    '''
+    ToDo: Creating the list of phrases in new file
+    '''
     text = phrase_creator(array_of_phrases)
-
-    text_model = markovify.Text(text)
-
+    '''
+    ToDo: Markovifying them
+    '''
+    text_model = markovify.NewlineText(text)
+    '''
+    ToDo: Printing them out
+    '''
     for i in range(100):
         print(text_model.make_short_sentence(300))
