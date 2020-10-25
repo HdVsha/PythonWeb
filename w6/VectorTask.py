@@ -9,7 +9,9 @@ class Vector:
     __values = [__x, __y, __z]
 
     def __init__(self, *args):
-        if type(args[0]) == str:  # [0] Because python has to know that it is a string
+        if len(args) == 0:
+            pass
+        elif type(args[0]) == str:  # [0] Because python has to know that it is a string
             self.__values = list(map(float, list(args[0].split(','))))
         else:
             self.__values = list(args)
@@ -60,3 +62,19 @@ if __name__ == "__main__":
     print(f"Subtraction product = {a - b}")
     print(f"Length of the vector a = {a.length_of_vector()}")
 
+    N = int(input())
+    vector_list = []
+
+    for t in range(N):
+        temp = input()
+        temp = ','.join(list(temp.split(' ')))
+        vector_list.append(Vector(temp))
+
+    mx = Vector()
+
+    for vector in vector_list:
+        mx = Vector()
+        if vector.length_of_vector() > mx.length_of_vector():
+            mx = vector
+
+    print(mx)
