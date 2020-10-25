@@ -36,6 +36,9 @@ class Complex:
     def abs(self):
         return math.sqrt(self.squared_parts())
 
+    def __neg__(self):
+        return Complex(-self.__real, -self.__imag)
+
     def __pow__(self, other):
         try:
             z_abs = self.abs()
