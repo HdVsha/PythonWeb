@@ -6,7 +6,7 @@ import math
 class MyMath:
 
     pi = 3.14
-    __complex = False   # Инкапсуляция(сделали приватное поле)
+    _complex = False   # Инкапсуляция(сделали приватное поле)
 
     @staticmethod
     def sin(x):
@@ -14,7 +14,7 @@ class MyMath:
 
     @classmethod
     def get_complex(cls):
-        return cls.__complex
+        return cls._complex
 
     @classmethod
     def sqrt(cls, x):
@@ -29,16 +29,13 @@ class MyMath:
 
 
 class MyComplexMath(MyMath):  # Наследование
-    __complex = True
+    _complex = True
 
-    @classmethod
-    def get_complex(cls):
-        return cls.__complex
 
-# cl1 = MyMath()
-# cl = MyComplexMath()
-# print(cl1.sqrt(1))
-# print(cl.sqrt(1))
-# print(cl.sqrt(-1))
-# print(cl1.sqrt(-1))
+cl1 = MyMath()
+cl = MyComplexMath()
+print(cl1.sqrt(1))
+print(cl.sqrt(1))
+print(cl.sqrt(-1))
+print(cl1.sqrt(-1))
 
