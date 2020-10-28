@@ -19,6 +19,8 @@ def test_vector_nums(vector1, vector2):
     # Conversion to array bc no other option is available
     assert np.diff(x, axis=0).any() == np.array(list(Vector(*vector1) - Vector(*vector2))).any()  # .any() bc arrays
     assert np.cross(np_vector1, np_vector2).tolist() == list(Vector(*vector1) & Vector(*vector2))
+    assert np.linalg.norm(vector1) == Vector(*vector1).length_of_vector()
+    assert np.linalg.norm(vector2) == Vector(*vector2).length_of_vector()
 
 
 @pytest.mark.parametrize("vector1, vector2", [('1, 2, 3', '2, 3, 5'), ('0, 0, 0', '0, 0, 0'), ('-1, -2, -3', '1, 2, 3'),
@@ -38,4 +40,5 @@ def test_vector_str(vector1, vector2):
     # Conversion to array bc no other option is available
     assert np.diff(x, axis=0).any() == np.array(list(Vector(*vector1) - Vector(*vector2))).any()  # .any() bc arrays
     assert np.cross(np_vector1, np_vector2).tolist() == list(Vector(*vector1) & Vector(*vector2))
-
+    assert np.linalg.norm(vector1) == Vector(*vector1).length_of_vector()
+    assert np.linalg.norm(vector2) == Vector(*vector2).length_of_vector()
