@@ -1,4 +1,8 @@
 language: python
-rvm:
-  - 3.7
-  - ipython
+python: '3.8'
+cache: pip
+jobs:
+  include:
+  - stage: Tests
+    name: pytest
+    script: cd w7 && pytest
