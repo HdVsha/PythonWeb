@@ -1,4 +1,6 @@
 def fibonacci(num):
+    if num == 0:
+        raise ValueError("What are you doing, man?")
     f_1 = 1
     f_2 = 1
     while num != 0:
