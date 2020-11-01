@@ -52,6 +52,11 @@ class Complex:
     def __str__(self):
         return f"{self.__real} + " + f"{self.__imag}" + "j" + "\n"  # I am cautious with "f"-strings
 
+    def get_real(self):
+        return self.__real
+
+    def get_imag(self):
+        return self.__imag
 
 # if __name__ == "__main__":
 #
