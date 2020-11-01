@@ -43,9 +43,9 @@ class Complex:
         try:
             z_abs = self.abs()
             z_angle = math.atan(self.__imag/self.__real)
-            tmp_res = z_abs * (math.cos(z_angle) + math.sin(z_angle))
-            res = tmp_res ** other
-            return res
+            real_part = z_abs * math.cos(z_angle * other)
+            imag_part = z_abs * math.sin(z_angle * other)
+            return Complex(int(real_part), int(imag_part))
         except ZeroDivisionError:
             raise ZeroDivisionError("Cannot pow the complex number with 0 real part")
 
