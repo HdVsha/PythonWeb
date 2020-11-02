@@ -3,9 +3,7 @@ class Node:
         self.l = None
         self.r = None
         self.v = val
-        # self.u = False
-    def get_value(self):
-        return self.v
+
 
 class Tree:
     def __init__(self):
@@ -82,6 +80,6 @@ tree.add(2)
 # print(tree)
 # print(tree.find(3).v)
 # print(tree.find(10))
-mas = []
+# mas = []  --- I don't know why appending to the list doesn't work
 for i in tree:
     print(i)
