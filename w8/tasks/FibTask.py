@@ -1,13 +1,15 @@
-def fibonacci(num):
-    if num == 0:
-        raise ValueError("What are you doing, man?")
-    f_1 = 1
-    f_2 = 1
-    while num != 0:
+def fibo_gen():
+    f_1, f_2 = 1, 1
+    while True:
         yield f_2
-        num -= 1
         f_1, f_2 = f_2, f_1 + f_2
 
 
-for i in fibonacci(7):
-    print(i)
+def fib_convert(num):
+    a = []
+    f = fibo_gen()
+    for i in range(num):
+        a.append(next(f))
+    return a
+
+
