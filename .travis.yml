@@ -4,5 +4,5 @@ cache: pip
 jobs:
   include:
   - stage: Tests
-    name: week 8
-    script: cd w8 && pytest
+    name: pytest
+    script: pytest
