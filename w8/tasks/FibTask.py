@@ -6,6 +6,8 @@ def fibo_gen():
 
 
 def fib_convert(num):
+    if num == 0:
+        raise ValueError("The numeration starts with 1")
     a = []
     f = fibo_gen()
     for i in range(num):
