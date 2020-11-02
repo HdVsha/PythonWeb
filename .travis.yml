@@ -5,4 +5,4 @@ jobs:
   include:
   - stage: Tests
     name: pytest
-    script: cd w7 && pytest
+    script: pytest
