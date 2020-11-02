@@ -1,6 +1,3 @@
-import sys
-sys.path.append('..')
-
 from tasks.FibTask import fib_convert, fibo_gen
 import pytest
 
