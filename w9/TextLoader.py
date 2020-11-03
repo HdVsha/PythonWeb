@@ -29,16 +29,19 @@ class TextLoader(ZipFile):
         return file_count
 
     def __iter__(self):
-        self.file_in_dir = next(iter(os.listdir(self.path)))
         return self
 
     def __next__(self):
+        self.file_in_dir = next(iter(os.listdir(self.path)))
         file = self.path_of_file + self.file_in_dir
         try:
-            f = open(file, 'a')
+            f = open(file, 'r')
             for line in f:
                 line.translate(str.maketrans('', '', string.punctuation))
                 line.lower()
+            copy_f = f
+            f = open(file, 'w')
+            f.write(str(copy_f))
             return f
         except StopIteration():
             raise StopIteration()
