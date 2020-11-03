@@ -9,7 +9,8 @@ class TextLoader(ZipFile):
         super().__init__(file)
         self.file_in_dir = None
         self.extractall(path)
-        self.path = path + "\sample"  # Now path to the files is stored in path
+        self.path = path
+        self.path_of_file = path + "\sample"  # Now path to the files is stored in path
 
     def __enter__(self):
         """
@@ -32,17 +33,18 @@ class TextLoader(ZipFile):
         return self
 
     def __next__(self):
+        file = self.path_of_file + self.file_in_dir
         try:
-            open(self.file_in_dir, 'a')
-            for line in self.file_in_dir:
+            f = open(file, 'a')
+            for line in f:
                 line.translate(str.maketrans('', '', string.punctuation))
                 line.lower()
-            return self.file_in_dir
+            return f
         except StopIteration():
             raise StopIteration()
         finally:
-            if self.file_in_dir:  # Если файл не открылся, значит 'file' == None и закрывать его не нужно
-                self.file_in_dir.close()
+            if f:  # Если файл не открылся, значит 'file' == None и закрывать его не нужно
+                f.close()
 
 
 if __name__ == "__main__":
