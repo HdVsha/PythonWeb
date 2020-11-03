@@ -1,7 +1,7 @@
 from zipfile import ZipFile
 import os
 import string
-
+import shutil
 
 class TextLoader(ZipFile):
 
@@ -10,7 +10,8 @@ class TextLoader(ZipFile):
         self.file_in_dir = None
         self.extractall(path)
         self.path = path
-        self.path_of_file = path + "\sample"  # Now path to the files is stored in path
+        self.path_of_file = path + "\\sample\\"  # Now path to the files is stored in path
+        self.iter = iter(os.listdir(self.path_of_file))
 
     def __enter__(self):
         """
@@ -25,29 +26,30 @@ class TextLoader(ZipFile):
         self.close()
 
     def __len__(self):
-        file_count = len(os.listdir(self.path))
+        file_count = len(os.listdir(self.path_of_file))
         return file_count
 
     def __iter__(self):
         return self
 
+    def __del__(self):
+        shutil.rmtree(self.path)
+
     def __next__(self):
-        self.file_in_dir = next(iter(os.listdir(self.path)))
+        self.file_in_dir = next(self.iter)
         file = self.path_of_file + self.file_in_dir
-        try:
-            f = open(file, 'r')
+        a = []
+        with open(file, 'r', encoding='utf8') as f:
             for line in f:
-                line.translate(str.maketrans('', '', string.punctuation))
-                line.lower()
-            copy_f = f
-            f = open(file, 'w')
-            f.write(str(copy_f))
-            return f
-        except StopIteration():
-            raise StopIteration()
-        finally:
-            if f:  # Если файл не открылся, значит 'file' == None и закрывать его не нужно
-                f.close()
+                l = line.translate(str.maketrans('', '', string.punctuation))
+                l = l.lower()
+                a.append(l)
+
+        with open(file, 'w', encoding='utf8') as f:
+            f.writelines(a)
+
+        f = open(file, 'r', encoding='utf8')
+        return f
 
 
 if __name__ == "__main__":
