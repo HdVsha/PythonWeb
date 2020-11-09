@@ -14,7 +14,7 @@ class TextLoader(ZipFile):
         self.path_of_file = path + "\\sample\\"  # Now path to the files is stored in path
         self.iter = iter(os.listdir(self.path_of_file))
 
-    def __enter__(self):
+    def __enter__(self):  # Making my own context manager so that it could work with open()
         """
         Открываем подключение с потоком данных
         """
