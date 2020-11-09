@@ -3,6 +3,7 @@ import os
 import string
 import shutil
 
+
 class TextLoader(ZipFile):
 
     def __init__(self, file, path):  # file - from where to extract, path - to where
@@ -58,6 +59,6 @@ if __name__ == "__main__":
     text_loader = TextLoader(where_from, where_to)
     print(len(text_loader))
     counter = 0
-    for file in text_loader:
+    for file in text_loader:  # To see that it is working
         counter += 1
     print(counter)
