@@ -1,0 +1,8 @@
+setup.py
+HdVsha.egg-info/PKG-INFO
+HdVsha.egg-info/SOURCES.txt
+HdVsha.egg-info/dependency_links.txt
+HdVsha.egg-info/top_level.txt
+my_mathematics/__init__.py
+my_mathematics/linear_algebra.py
+my_mathematics/math.py
