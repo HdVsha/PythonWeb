@@ -9,34 +9,31 @@ def dot(v1, v2):
 
 
 def split_array(v1, v2, pieces_number):
-    res_v1, res_v2 = np.split(np.array(v1), pieces_number), np.split(np.array(v2), pieces_number)
-
+    res_v1, res_v2 = np.split(v1, pieces_number), np.split(v2, pieces_number)
     for i in range(len(res_v1)):
         if res_v1[i].size > 0:
             yield (res_v1[i], res_v2[i])
 
 
-def processed_dot(mas, th):
-    processes = []
-    for subarray1, subarray2 in split_array(mas[0], mas[1], th):
-        processes.append(multiprocessing.Process(target=dot, args=(np.array(subarray1), np.array(subarray2),)))
-        processes[-1].start()
-    for process in processes:
-        process.join()
+def processed_dot(mas, pr):
+    pool = multiprocessing.Pool(processes=pr)
+    results = [pool.apply(dot, args=(subarray1, subarray2,))
+               for subarray1, subarray2 in split_array(mas[0], mas[1], pr)]
 
-    return "Finished dotting vectors"
+    return results
 
 
 if __name__ == "__main__":
 
-    array_of_vecs = [[i ** 3 for i in range(10000000)] for j in range(2)]
-    x_data = [1, 2, 4, 8, 10]  # Num of threads
+    arr_length = int(1e6)
+    array_of_vecs = [np.random.randn(arr_length), np.random.randn(arr_length)]
+    x_data = [1, 2, 4, 8, 10]  # Num of processes
     res_data = []
-    for thread in x_data:
+    for processes in x_data:
         tmp_data = []
-        for sample in range(3):  # How many times to test this num of threads
+        for sample in range(3):  # To see in average
             start = datetime.now()
-            print(processed_dot(array_of_vecs, thread))
+            print(processed_dot(array_of_vecs, processes))
             tmp_data.append((datetime.now() - start).microseconds)
         res_data.append(sum(tmp_data) / len(tmp_data))  # How much time did it take to proceed
     plt.plot(x_data, res_data)
