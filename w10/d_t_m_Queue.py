@@ -13,7 +13,6 @@ def count_res_dot(q):
     res = 0
     while q:
         res += q.get()
-        print("suka")
     return res
 
 
