@@ -8,7 +8,7 @@ async def fetch(client, service):
         text = await resp.text()
 
         for line in text:
-            if line.startswith('a '):
+            if line.startswith('a   '):
                 async with aiofile.AIOFile('found.txt', 'w') as file:
                     await file.write(f'From: {service}\nWhat: {line} \n')
 
