@@ -3,6 +3,7 @@ import time
 import asyncio
 from concurrent.futures import FIRST_COMPLETED
 import aiohttp
+import socket
 
 Service = namedtuple('Service', ('name', 'url', 'ip_attr'))
 
@@ -13,8 +14,11 @@ SERVICES = (
 
 
 async def fetch_ip(service, session):
-    async with session.get(service.url) as resp:
-        return await resp.json()
+    async with session.get(service.url):
+        hostname = socket.gethostname()  # Get the hostname using the socket.gethostname() method
+        # Find the IP address by passing the hostname as an argument to the
+        return socket.gethostbyname(hostname)  # socket.gethostbyname() method
+
 
 
 async def asynchronous():
@@ -22,7 +26,7 @@ async def asynchronous():
         done, pending = await asyncio.wait({fetch_ip(service, session) for service in SERVICES},
                                            return_when=FIRST_COMPLETED)
         for serv in done:
-            print(serv.result()['query'])
+            print(serv.result())
 
 if __name__ == "__main__":
     ioloop = asyncio.get_event_loop()
