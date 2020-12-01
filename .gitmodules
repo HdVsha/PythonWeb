@@ -1,0 +1,3 @@
+[submodule "regexp/regexp"]
+	path = regexp/regexp
+	url = https://github.com/mipt-cs/regexp.git
