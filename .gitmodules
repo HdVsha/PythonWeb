@@ -1,0 +1,3 @@
+[submodule "w12/regexp"]
+	path = w12/regexp
+	url = https://github.com/mipt-cs/regexp.git
