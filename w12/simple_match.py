@@ -58,7 +58,7 @@ REGEXP_6 = r'\b(\w{2}){3}$'
 # + Aaa aaa aaa
 # - A
 # - aaa A aaa
-REGEXP_7 = ''
+REGEXP_7 = r'.* \w{3} '
 
 # + abc
 # + abc03
@@ -67,4 +67,4 @@ REGEXP_7 = ''
 # - Aabc
 # - abc1
 # - #abc
-REGEXP_8 = ''
+REGEXP_8 = r'a[^1]*$'
