@@ -15,7 +15,7 @@ REGEXP_1 = r'a'
 # + acb
 # - ab
 # - aabc
-REGEXP_2 = r'a.{3}'
+REGEXP_2 = r'\b\w{3}$'
 
 # + sofia.mp3
 # + sofia.mp4
@@ -28,7 +28,7 @@ REGEXP_3 = r'sofia\.mp[3-4]$'
 # + vera
 # + zveri
 # - zver
-REGEXP_4 = r'ver.'
+REGEXP_4 = r'(?!zver$)'
 
 # - a
 # - aa
