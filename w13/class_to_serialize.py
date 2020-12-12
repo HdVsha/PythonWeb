@@ -1,9 +1,10 @@
+import json
+
 class MyClass:
     def __init__(self, name, surname, is_hired):
         self.name = name
         self.surname = surname
         self.is_hired = is_hired
-
 
 
 def obj_to_json(my_class_instance):
@@ -15,8 +16,7 @@ def obj_to_json(my_class_instance):
     {'name': 'me', 'surname': 'my_surname', 'is_hired': True'}
     """
     # NOTE: используйте obj.__dict__, не пишите явно все поля класса
-
-    pass
+    return json.dumps(my_class_instance.__dict__)
 
 
 def json_to_obj(my_class_instance):
@@ -29,4 +29,7 @@ def json_to_obj(my_class_instance):
     <__main__.MyClass object at 0x7fd8e9634510>
     """
     # NOTE: можно использовать kwargs: MyClass(**some_dict)
-    pass
+    obj_dict = json.loads(my_class_instance)
+
+    obj = MyClass(**obj_dict)
+    return obj
